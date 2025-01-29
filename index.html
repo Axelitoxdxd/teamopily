@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felices 19 Bombón</title>
+    <style>
+        /* Fondo general */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9e3f1; /* Color rosado suave de fondo */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Para que los elementos animados no se salgan */
+        }
+        
+        /* Contenedor de la caja principal */
+        .container {
+            background-color: #fff; /* Fondo blanco para destacar el contenido */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Estilo del título principal */
+        h1 {
+            font-size: 36px;
+            color: #ff60a3; /* Color rosado fuerte */
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        /* Corazón decorativo cerca del título */
+        h1::after {
+            content: "💖";  /* Corazón decorativo */
+            font-size: 40px;
+            position: absolute;
+            right: -50px;
+            top: 0;
+        }
+
+        /* Estilo del botón pastel */
+        button {
+            background-color: #ff60a3;
+            width: 150px;
+            height: 150px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 30px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            transform: scale(1.1); /* Efecto de aumento */
+            box-shadow: 0 0 20px rgba(255, 100, 163, 0.6); /* Brillo al pasar el mouse */
+        }
+
+        button:active {
+            transform: scale(0.9); /* Efecto al hacer clic */
+        }
+
+        /* Velas del pastel */
+        button::before {
+            content: "🕯️🕯️🕯️"; /* Velas del pastel */
+            font-size: 24px;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Fuego animado sobre las velas */
+        button::after {
+            content: "🔥🔥🔥"; /* Llamas animadas */
+            font-size: 16px;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: flame 1s infinite alternate;
+        }
+
+        @keyframes flame {
+            0% {
+                transform: translateX(-50%) translateY(0) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateX(-50%) translateY(-10px) scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* Estilo del mensaje oculto */
+        .hidden-message {
+            display: none;
+            margin-top: 30px;
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+            font-weight: bold;
+        }
+
+        /* Estilo de las letras del mensaje oculto */
+        .hidden-message p {
+            color: #ff60a3; /* Rosado en el mensaje */
+        }
+
+        /* Corazones flotando en el fondo */
+        .hearts {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 40px;
+            z-index: -1;
+        }
+
+        .hearts span {
+            position: absolute;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hearts span:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .hearts span:nth-child(2) { left: 30%; animation-delay: 1s; }
+        .hearts span:nth-child(3) { left: 50%; animation-delay: 2s; }
+        .hearts span:nth-child(4) { left: 70%; animation-delay: 3s; }
+        .hearts span:nth-child(5) { left: 90%; animation-delay: 4s; }
+
+        /* Animación de los corazones flotando */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Efecto de confeti */
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .confetti span {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff60a3;
+            animation: confetti 1.5s infinite;
+        }
+
+        /* Animación de confeti cayendo */
+        @keyframes confetti {
+            0% { transform: translateY(-50px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hearts">
+        <!-- Corazones flotando -->
+        <span>💖</span>
+        <span>💖</span>
+        <span>💖</span>
+        <span>💖</span>
+        <span>💖</span>
+    </div>
+
+    <div class="confetti">
+        <!-- Confeti cayendo -->
+        <span style="left: 10%; animation-delay: 0.1s;"></span>
+        <span style="left: 20%; animation-delay: 0.2s;"></span>
+        <span style="left: 30%; animation-delay: 0.3s;"></span>
+        <span style="left: 40%; animation-delay: 0.4s;"></span>
+        <span style="left: 50%; animation-delay: 0.5s;"></span>
+        <span style="left: 60%; animation-delay: 0.6s;"></span>
+        <span style="left: 70%; animation-delay: 0.7s;"></span>
+        <span style="left: 80%; animation-delay: 0.8s;"></span>
+        <span style="left: 90%; animation-delay: 0.9s;"></span>
+    </div>
+
+    <div class="container">
+        <h1>Felices 19, Bombón!</h1>
+        <button onclick="mostrarMensaje()"></button>
+        <div class="hidden-message" id="mensaje">
+            <p><strong>Pequeña Pily,</strong> eres una mujer maravillosa, estoy muy feliz de conocerte y estar contigo en este día tan especial. No me canso de decirte lo increíble, hermosa, valiente y capaz que eres. Gracias por tanto y por siempre pintar de color cada día. Nunca pierdas esa sonrisa y esos lindos luceros que cada mañana relucen más que el mismo sol. ¡Te amo!</p>
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar el mensaje oculto cuando el botón es presionado
+        function mostrarMensaje() {
+            document.getElementById('mensaje').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
